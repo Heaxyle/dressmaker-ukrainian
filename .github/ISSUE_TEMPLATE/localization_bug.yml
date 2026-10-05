@@ -1,0 +1,53 @@
+   name: Localization bug / Помилка перекладу
+   description: Report a translation or display problem
+   labels: ["lqa"]
+   body:
+     - type: dropdown
+       id: category
+       attributes:
+         label: Category / Категорія
+         options:
+           - mistranslation (wrong meaning)
+           - untranslated (still English)
+           - truncation / overflow (text doesn't fit)
+           - terminology (inconsistent term)
+           - grammar / gender
+           - style / tone
+           - tags / placeholders broken
+           - font / rendering
+       validations: { required: true }
+     - type: dropdown
+       id: severity
+       attributes:
+         label: Severity
+         options: ["Critical – blocks play", "Major – wrong meaning / unreadable", "Minor – style, typo"]
+       validations: { required: true }
+     - type: input
+       id: location
+       attributes:
+         label: Where in the game / Де в грі
+         placeholder: "e.g. cutting room tooltip; Priya's 3rd commission dialogue"
+       validations: { required: true }
+     - type: textarea
+       id: current
+       attributes:
+         label: Current text (+ English original if known) / Поточний текст
+       validations: { required: true }
+     - type: textarea
+       id: expected
+       attributes:
+         label: Suggested fix / Як має бути
+     - type: input
+       id: string_id
+       attributes:
+         label: String ID (if known)
+     - type: textarea
+       id: screenshot
+       attributes:
+         label: Screenshot
+         description: Drag & drop an image here
+     - type: input
+       id: version
+       attributes:
+         label: Translation version
+         placeholder: v0.9-beta
