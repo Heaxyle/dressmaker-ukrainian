@@ -1,0 +1,12 @@
+   # Never commit game files
+   *.bundle
+   *.assets
+   *.resS
+   catalog.bin
+   *.uk
+   *.uk.bundle
+   player.json*
+   __pycache__/
+   build/
+   dist/
+   *.spec
