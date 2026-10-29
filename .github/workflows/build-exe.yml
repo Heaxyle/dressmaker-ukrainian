@@ -1,5 +1,7 @@
 # Builds a standalone Windows installer (no Python needed for players)
-# and attaches it to the GitHub Release when you push a tag like v0.9-beta.
+# and publishes it as a GitHub Release.
+# Trigger: push a tag like v0.9.1-beta  (git tag v0.9.1-beta && git push origin v0.9.1-beta)
+#          or run it manually from the Actions tab (builds the exe only, no release).
 name: Build installer .exe
 
 on:
@@ -38,9 +40,16 @@ jobs:
           name: DressmakerUA-Installer
           path: dist/DressmakerUA-Installer.exe
 
-      - name: Attach to release
-        if: startsWith(github.ref, 'refs/tags/')
+      - name: Create release and attach exe
+        if: github.event_name != 'workflow_dispatch'
         uses: softprops/action-gh-release@v2
         with:
-          files: dist/DressmakerUA-Installer.exe
+          tag_name: ${{ github.ref_name }}
+          name: ${{ format('{0} — Ukrainian translation', github.ref_name) }}
           prerelease: ${{ contains(github.ref_name, 'beta') }}
+          body: |
+            Українізатор Dressmaker / Ukrainian translation for Dressmaker (unofficial fan translation).
+
+            Download **DressmakerUA-Installer.exe**, run it, press 1 to install. Run it again to reinstall or uninstall.
+            What's new: see [CHANGELOG.md](https://github.com/${{ github.repository }}/blob/main/CHANGELOG.md).
+          files: dist/DressmakerUA-Installer.exe
