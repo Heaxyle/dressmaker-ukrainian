@@ -17,7 +17,7 @@ Unofficial Ukrainian localization of [Dressmaker](https://store.steampowered.com
 | **Translated** | ~5,800 strings: UI, tutorial, fabrics & items, all dialogue, newspaper columns, ~600 pattern-piece names |
 | **Translation & tools** | AI-generated (Claude, Anthropic) |
 | **Testing, integration & LQA** | Heaxyle, with native-speaker playtesting |
-| **Status** | 🧪 **Beta (v0.9.1)** — complete translation, LQA playtesting in progress. Expect some inaccuracies; please [report them](../../issues/new/choose). |
+| **Status** | ✅ **Release (v1.0.0)** — complete translation, playtested in-game. Found a mistake? Please [report it](../../issues/new/choose). |
 | **Game version tested** | Steam, October 2026 patch (Unity 6000.3.4f1) |
 
 ### Known limitations
@@ -77,7 +77,7 @@ Open an [issue](../../issues/new/choose) using the **Localization bug** template
 | **Перекладено** | ~5 800 рядків: інтерфейс, навчання, тканини й предмети, усі діалоги, газетні колонки, ~600 назв деталей викрійок |
 | **Переклад та інструменти** | згенеровано ШІ (Claude, Anthropic) |
 | **Тестування, інтеграція та LQA** | Heaxyle, з тестуванням носієм мови |
-| **Статус** | 🧪 **Бета (v0.9.1)** — переклад повний, триває перевірка якості під час гри. Можливі неточності — [повідомляйте](../../issues/new/choose). |
+| **Статус** | ✅ **Реліз (v1.0.0)** — переклад повний, перевірений у грі. Знайшли помилку? [Повідомте](../../issues/new/choose). |
 
 ### Відомі обмеження
 - Текст, намальований на зображеннях (газета, листівки), лишається англійською.

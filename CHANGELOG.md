@@ -1,7 +1,9 @@
 # Changelog
 
-## [Unreleased] — v1.0 (after LQA pass)
-- Playtesting with a native speaker; issues tracked in GitHub Issues (label `lqa`).
+## v1.0.0 — 2026-10-29
+- First full release. Same translation as v0.9.1-beta, playtested in-game on the October 2026 patch.
+- Installer is now built and published automatically by GitHub Actions when a version tag is pushed.
+- Translation fixes and reports: GitHub Issues (label `lqa`).
 
 ## v0.9.1-beta — 2026-10-24
 - Updated for the October 2026 game patch (new text tables, new catalog).
