@@ -13,3 +13,6 @@ build/
 dist/
 *.spec
 *.exe
+
+# Width-check font (downloaded, see tools/check_widths.py)
+tools/fonts/

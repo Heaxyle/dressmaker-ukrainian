@@ -1,0 +1,28 @@
+# Checks that Ukrainian item names still fit: fails if any name is wider than the
+# widest English item name. Runs on every change to the translation.
+name: Check item name widths
+
+on:
+  push:
+    paths: ["translation/**", "tools/check_widths.py"]
+  pull_request:
+    paths: ["translation/**", "tools/check_widths.py"]
+
+jobs:
+  widths:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Pillow and EB Garamond
+        run: |
+          pip install pillow
+          mkdir -p tools/fonts
+          curl -sSL -o tools/fonts/EBGaramond.ttf "https://github.com/google/fonts/raw/main/ofl/ebgaramond/EBGaramond%5Bwght%5D.ttf"
+
+      - name: Check widths
+        run: python tools/check_widths.py

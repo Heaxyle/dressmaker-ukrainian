@@ -51,10 +51,11 @@ If the update changed the game's text, some lines may show in English until the 
 From the `tools` folder, run each script on your <b>original</b> files, then replace each original with the new <code>.uk</code> / <code>.uk.bundle</code> file:
 
 ```
-pip install UnityPy
+pip install UnityPy TypeTreeGeneratorAPI
 python apply_uk.py "<GAME>\Dressmaker_Data\StreamingAssets\aa\StandaloneWindows64\localization-string-tables-english(en)_assets_all.bundle" ..\translation\uk_strings.json
 python patch_catalog.py "<GAME>\Dressmaker_Data\StreamingAssets\aa\catalog.bin"
 python patch_pieces.py apply "<GAME>\Dressmaker_Data\resources.assets" ..\translation\pieces_uk.json
+python patch_layout.py "<GAME>\Dressmaker_Data\level2" "<GAME>\Dressmaker_Data\sharedassets2.assets" --managed "<GAME>\Dressmaker_Data\Managed"
 ```
 </details>
 

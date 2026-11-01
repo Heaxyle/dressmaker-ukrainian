@@ -23,7 +23,7 @@ jobs:
           python-version: "3.12"
 
       - name: Install dependencies
-        run: pip install UnityPy pyinstaller
+        run: pip install UnityPy TypeTreeGeneratorAPI pyinstaller
 
       - name: Build exe
         run: >
@@ -31,6 +31,7 @@ jobs:
           --name DressmakerUA-Installer
           --paths tools
           --collect-all UnityPy
+          --collect-all TypeTreeGeneratorAPI
           --add-data "translation;translation"
           tools/install.py
 

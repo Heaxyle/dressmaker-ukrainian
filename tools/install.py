@@ -6,7 +6,7 @@ Dressmaker Ukrainian translation - one-step installer / uninstaller.
     python install.py "D:\\SteamLibrary\\steamapps\\common\\Dressmaker"   -> install to a given folder
 
 What it does:
-  1. Backs up the 3 original game files to  <game>\\uk_backup\\  (only the first time)
+  1. Backs up the 5 original game files to  <game>\\uk_backup\\  (only the first time)
   2. Always patches FROM those backups, so re-running is safe
   3. Replaces the game files with the patched versions
 """
@@ -31,6 +31,8 @@ FILES = {
                            "localization-string-tables-english(en)_assets_all.bundle"),
     "catalog": os.path.join("Dressmaker_Data", "StreamingAssets", "aa", "catalog.bin"),
     "assets": os.path.join("Dressmaker_Data", "resources.assets"),
+    "level2": os.path.join("Dressmaker_Data", "level2"),
+    "shared2": os.path.join("Dressmaker_Data", "sharedassets2.assets"),
 }
 
 
@@ -81,6 +83,18 @@ def run(name, func, *args):
         sys.argv = old_argv
 
 
+def patch_layout_safely(game, files):
+    """Optional step: on any problem keep these files original; the text translation still installs."""
+    try:
+        import patch_layout
+        patch_layout.apply(files, os.path.join(game, "Dressmaker_Data", "Managed"))
+    except Exception as e:  # noqa: BLE001
+        print(f"  Skipped ({e}). Item names may be cut off; everything else is translated.")
+    for src in files:
+        if not os.path.isfile(src + ".uk"):
+            shutil.copyfile(src, src + ".uk")
+
+
 def finish(code=0):
     if FROZEN:
         input("\nPress Enter to close... / Натисніть Enter, щоб закрити...")
@@ -119,15 +133,18 @@ def install(game):
             print(f"Backed up {os.path.basename(rel)}")
     b = {k: os.path.join(backup, os.path.basename(v)) for k, v in FILES.items()}
 
-    print("\n[1/3] Translating text tables...")
+    print("\n[1/4] Translating text tables...")
     run("apply_uk", apply_uk.main, b["bundle"], os.path.join(TRANSLATION, "uk_strings.json"))
-    print("\n[2/3] Patching catalog...")
+    print("\n[2/4] Patching catalog...")
     run("patch_catalog", patch_catalog.main, b["catalog"])
-    print("\n[3/3] Translating pattern-piece names...")
+    print("\n[3/4] Translating pattern-piece names...")
     run("patch_pieces", lambda: patch_pieces.apply(sys.argv[1], sys.argv[2]),
         b["assets"], os.path.join(TRANSLATION, "pieces_uk.json"))
+    print("\n[4/4] Making item-name labels fit longer names...")
+    patch_layout_safely(game, [b["level2"], b["shared2"]])
 
-    outputs = {"bundle": b["bundle"] + ".uk.bundle", "catalog": b["catalog"] + ".uk", "assets": b["assets"] + ".uk"}
+    outputs = {"bundle": b["bundle"] + ".uk.bundle", "catalog": b["catalog"] + ".uk", "assets": b["assets"] + ".uk",
+               "level2": b["level2"] + ".uk", "shared2": b["shared2"] + ".uk"}
     for key, rel in FILES.items():
         shutil.move(outputs[key], os.path.join(game, rel))
     with open(state, "w", encoding="utf-8") as f:
