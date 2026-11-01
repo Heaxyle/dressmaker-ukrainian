@@ -13,6 +13,6 @@ if errorlevel 1 (
 )
 echo Close the game before continuing. / Закрийте гру перед продовженням.
 pause
-python -m pip install --quiet --upgrade UnityPy TypeTreeGeneratorAPI
+python -m pip install --quiet --upgrade UnityPy
 python "%~dp0tools\install.py" %*
 pause

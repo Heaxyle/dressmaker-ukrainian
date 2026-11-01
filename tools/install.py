@@ -83,11 +83,11 @@ def run(name, func, *args):
         sys.argv = old_argv
 
 
-def patch_layout_safely(game, files):
+def patch_layout_safely(files):
     """Optional step: on any problem keep these files original; the text translation still installs."""
     try:
         import patch_layout
-        patch_layout.apply(files, os.path.join(game, "Dressmaker_Data", "Managed"))
+        patch_layout.apply(files, os.path.join(TRANSLATION, "layout_patch.json"))
     except Exception as e:  # noqa: BLE001
         print(f"  Skipped ({e}). Item names may be cut off; everything else is translated.")
     for src in files:
@@ -141,7 +141,7 @@ def install(game):
     run("patch_pieces", lambda: patch_pieces.apply(sys.argv[1], sys.argv[2]),
         b["assets"], os.path.join(TRANSLATION, "pieces_uk.json"))
     print("\n[4/4] Making item-name labels fit longer names...")
-    patch_layout_safely(game, [b["level2"], b["shared2"]])
+    patch_layout_safely([b["level2"], b["shared2"]])
 
     outputs = {"bundle": b["bundle"] + ".uk.bundle", "catalog": b["catalog"] + ".uk", "assets": b["assets"] + ".uk",
                "level2": b["level2"] + ".uk", "shared2": b["shared2"] + ".uk"}
