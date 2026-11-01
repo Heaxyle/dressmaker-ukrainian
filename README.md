@@ -14,10 +14,10 @@ Unofficial Ukrainian localization of [Dressmaker](https://store.steampowered.com
 
 | | |
 |---|---|
-| **Translated** | ~5,800 strings: UI, tutorial, fabrics & items, all dialogue, newspaper columns, ~600 pattern-piece names |
+| **Translated** | ~5,800 strings: UI, tutorial, fabrics & items (short names: «Тип, колір»), all dialogue, newspaper columns, ~600 pattern-piece names |
 | **Translation & tools** | AI-generated (Claude, Anthropic) |
 | **Testing, integration & LQA** | Heaxyle, with native-speaker playtesting |
-| **Status** | ✅ **Release (v1.0.0)** — complete translation, playtested in-game. Found a mistake? Please [report it](../../issues/new/choose). |
+| **Status** | 🧪 **Beta (v1.1.0-beta)** — shorter item names and a new layout fix so they fit; stable release: v1.0.0. Found a mistake? Please [report it](../../issues/new/choose). |
 | **Game version tested** | Steam, October 2026 patch (Unity 6000.3.4f1) |
 
 ### Known limitations
@@ -25,6 +25,7 @@ Unofficial Ukrainian localization of [Dressmaker](https://store.steampowered.com
 - Cyrillic uses a fallback sans-serif font (the game's font has no Cyrillic glyphs).
 - The translation replaces the **English** language slot — keep the in-game language set to *English*.
 - Steam updates or “Verify integrity of game files” revert the patch — just run the installer again.
+- Since v1.1.0-beta the installer also adjusts two labels so long item names fit: the inventory list wraps them to two lines (13–18 pt) and the cutting room shrinks them. This layout fix is new; if the game misbehaves, run the installer again and choose **2 = Uninstall**. After a game update the fix is skipped (with a message) until the translation is updated; names are then cut off as in v1.0.0.
 
 ### Install (Windows) — easy way, no Python needed
 1. Go to [Releases](../../releases) and download **`DressmakerUA-Installer.exe`**.
@@ -75,16 +76,17 @@ Open an [issue](../../issues/new/choose) using the **Localization bug** template
 
 | | |
 |---|---|
-| **Перекладено** | ~5 800 рядків: інтерфейс, навчання, тканини й предмети, усі діалоги, газетні колонки, ~600 назв деталей викрійок |
+| **Перекладено** | ~5 800 рядків: інтерфейс, навчання, тканини й предмети (короткі назви «Тип, колір»), усі діалоги, газетні колонки, ~600 назв деталей викрійок |
 | **Переклад та інструменти** | згенеровано ШІ (Claude, Anthropic) |
 | **Тестування, інтеграція та LQA** | Heaxyle, з тестуванням носієм мови |
-| **Статус** | ✅ **Реліз (v1.0.0)** — переклад повний, перевірений у грі. Знайшли помилку? [Повідомте](../../issues/new/choose). |
+| **Статус** | 🧪 **Бета (v1.1.0-beta)** — коротші назви предметів і нове виправлення розмітки, щоб вони вміщалися; стабільний реліз — v1.0.0. Знайшли помилку? [Повідомте](../../issues/new/choose). |
 
 ### Відомі обмеження
 - Текст, намальований на зображеннях (газета, листівки), лишається англійською.
 - Кирилиця відображається запасним шрифтом без засічок.
 - Переклад замінює **англійську** мову — у грі має бути вибрано *English*.
 - Оновлення Steam або «Перевірити цілісність файлів» скидають переклад — просто запустіть інсталятор ще раз.
+- Від v1.1.0-beta інсталятор також підлаштовує два написи, щоб довгі назви предметів вміщалися: в інвентарі назва переноситься на два рядки (13–18 pt), у кімнаті крою — зменшується. Це виправлення нове: якщо гра поводиться дивно, запустіть інсталятор ще раз і виберіть **2 = Видалити**. Після оновлення гри виправлення пропускається (з повідомленням), доки переклад не оновлять; тоді назви обрізаються, як у v1.0.0.
 
 ### Встановлення (Windows) — простий спосіб, без Python
 1. Відкрийте [Releases](../../releases) і завантажте **`DressmakerUA-Installer.exe`**.

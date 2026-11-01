@@ -1,8 +1,9 @@
 # Changelog
 
-## Unreleased
-- Shorter item names (930 fabrics, trims, lace, bows and accessories) in the format «Тип, колір», e.g. «Мереживо, айворі», «Подвійна рюша, айворі», with one colour glossary for all items (`docs/glossary.md`).
-- Inventory list names now wrap to two lines and shrink to 13–18 pt instead of being cut off; the cutting-room fabric name shrinks to fit (18–36 pt). New installer step `patch_layout.py` writes 5 bytes from a per-game-build table (`translation/layout_patch.json`, made by `tools/make_layout_table.py`) after checking each object's SHA-256, and skips itself on any mismatch; the installer now also backs up `level2` and `sharedassets2.assets`.
+## v1.1.0-beta — 2026-11-01
+- Shorter item names (930 fabrics, trims, lace, bows and accessories) in the format «Тип, колір», e.g. «Мереживо, айворі», «Подвійна рюша, айворі», «Великий бант, пудровий». The median name is now 1.15× the English width (was 1.47×), and none is wider than the longest English name.
+- One colour glossary for all items (260 colours, `docs/glossary.md`), e.g. Ivory → айворі, Dusty Pink → пудровий, Teal → морська хвиля, Blue Jay → волошковий, Royal Blue → електрик. Trims without another type are «Тасьма»; bows no longer repeat the fabric.
+- **New, please test:** inventory list names now wrap to two lines and shrink to 13–18 pt instead of being cut off; the cutting-room fabric name shrinks to fit (18–36 pt). New installer step `patch_layout.py` writes 5 bytes from a per-game-build table (`translation/layout_patch.json`, made by `tools/make_layout_table.py`) after checking each object's SHA-256, and skips itself on any mismatch; the installer now also backs up `level2` and `sharedassets2.assets`. If the game misbehaves, run the installer again and choose **2 = Uninstall**.
 - `tools/check_widths.py` (run by GitHub Actions on every translation change): fails if an item name is wider than the widest English one or if two different items share a name.
 
 ## v1.0.0 — 2026-10-29
